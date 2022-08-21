@@ -1,0 +1,3 @@
+/home/mr/Dokumente/Projekte/HellschreiberPico/build/pioasm/CMakeFiles/pioasm.dir
+/home/mr/Dokumente/Projekte/HellschreiberPico/build/pioasm/CMakeFiles/edit_cache.dir
+/home/mr/Dokumente/Projekte/HellschreiberPico/build/pioasm/CMakeFiles/rebuild_cache.dir

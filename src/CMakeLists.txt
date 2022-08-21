@@ -1,0 +1,9 @@
+
+add_library(osc_screen osc_screen.c)
+add_executable(hellschreiber hellschreiber.c)
+
+pico_enable_stdio_usb(hellschreiber 1)
+pico_enable_stdio_uart(hellschreiber 1)
+pico_add_extra_outputs(hellschreiber)
+target_link_libraries(osc_screen pico_stdlib)
+target_link_libraries(hellschreiber osc_screen pico_stdlib)
