@@ -87,7 +87,11 @@ void core1_entry()
 }
 
 int main()
-{   
+{
+    // overlock
+    //set_sys_clock_khz(100*1000, true);
+
+
     stdio_init_all();
     multicore_launch_core1(core1_entry);
     const uint LED_PIN = PICO_DEFAULT_LED_PIN;
@@ -97,12 +101,8 @@ int main()
     init_screen();
     fill_screen();
 
+    output_screen_to_gpio(); // endless loop
 
-    while (true)
-    {
-        output_screen_to_gpio();
-        //gpio_put(LED_PIN, !gpio_get(LED_PIN));
-    }
     return 0;
 }
 

@@ -6,6 +6,8 @@
 //extern uint64_t screen[HOR_MAX];
 uint64_t screen[HOR_MAX];
 
+static uint64_t current_line;
+
 void init_screen()
 {
     for(int i = 0; i < HOR_MAX; i++)
@@ -113,33 +115,38 @@ void set_pixel(int i, int j, int on_off)
 
 void output_screen_to_gpio()
 {
-  for (int screen_cnt_hor = 0; screen_cnt_hor < HOR_MAX;screen_cnt_hor++)
+  while(1)
   {
-    // Charging capacitor for vertical deflection
-    gpio_put(V_PIN, true);
-    busy_wait_at_least_cycles(50);
-    gpio_put(V_PIN, false);
-
-    // draw line twice (HELLSCHREIBER double spiral)
-    for (int i = 0; i < 2; i++)
+    for (int screen_cnt_hor = 0; screen_cnt_hor < HOR_MAX;screen_cnt_hor++)
     {
-      for (int screen_cnt_vert = VERT_MAX-1; screen_cnt_vert >= 0;screen_cnt_vert--)
-      {
-        //cur_line = cur_line >> 1;
-        //gpio_put(Z_MOD_PIN, (cur_line & 1UL));
-        gpio_put(Z_MOD_PIN, !((screen[screen_cnt_hor] >> screen_cnt_vert) & 1UL));
-        busy_wait_at_least_cycles(90);
-         // Dies ist die Zeit für ein Pixel (ca.). Durch den 10-maligen Bildaufbau werden die 7ms eines Hell-Pixels erzeugt
-                 // Formel: delay*pixel(pro Spalte)*2(wegen DoubleRes)+20µs(Vertikalbalenkungszeit)*10(Spalten) 11.7857*7*2+20*10
-                 // ~ (sollte eig. 7ms ergeben sind aber 3499µs. auf oszi sind das aber ca. 7 - 7,9 ms ==> HÄ???)
-      }
-    }
-    // vertical blanking
-    gpio_put(Z_MOD_PIN, true); // Austastlücke vertikal
-  }
+      // Charging capacitor for vertical deflection
+      gpio_put(V_PIN, true);
+      busy_wait_at_least_cycles(50);
+      gpio_put(V_PIN, false);
 
-  // Trigger impulse
-  gpio_put(TRIG_PIN, true);
-  //busy_wait_us(1);
-  gpio_put(TRIG_PIN, false);
+      // draw line twice (HELLSCHREIBER double spiral)
+      for (int i = 0; i < 2; i++)
+      {
+        //current_line = screen[screen_cnt_hor];
+        for (int screen_cnt_vert = VERT_MAX-1; screen_cnt_vert >= 0;screen_cnt_vert--)
+        {
+          //current_line = current_line >> 1;
+          //gpio_put(Z_MOD_PIN, !(current_line & 1UL));
+          gpio_put(Z_MOD_PIN, !((screen[screen_cnt_hor] >> screen_cnt_vert) & 1UL));
+          busy_wait_at_least_cycles(75);
+          // Dies ist die Zeit für ein Pixel (ca.). Durch den 10-maligen Bildaufbau werden die 7ms eines Hell-Pixels erzeugt
+                  // Formel: delay*pixel(pro Spalte)*2(wegen DoubleRes)+20µs(Vertikalbalenkungszeit)*10(Spalten) 11.7857*7*2+20*10
+                  // ~ (sollte eig. 7ms ergeben sind aber 3499µs. auf oszi sind das aber ca. 7 - 7,9 ms ==> HÄ???)
+        }
+      }
+      // vertical blanking
+      gpio_put(Z_MOD_PIN, true); // Austastlücke vertikal
+    }
+
+    // Trigger impulse
+    gpio_put(TRIG_PIN, true);
+    //busy_wait_us(1);
+    busy_wait_at_least_cycles(3);
+    gpio_put(TRIG_PIN, false);
+  }
 }
