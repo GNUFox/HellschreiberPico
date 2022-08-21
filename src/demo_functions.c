@@ -92,6 +92,37 @@ void checker_board(int pos_x, int pos_y, int size_x, int size_y, bool inverted)
     }
 }
 
+
+/*
+void up_down_A()
+{
+    int h_pos_cnt = -14;
+    int vert_pos = 1;
+    int down_up = 1;
+    while(1)
+    {
+        if(h_pos_cnt > HOR_MAX) h_pos_cnt = -14;
+
+        if(down_up == 1)
+        {
+            if(vert_pos < 10) vert_pos++;
+            if(vert_pos == 10)down_up = 0;
+        }
+        else
+        {
+            if(vert_pos > 0) vert_pos--;
+            if(vert_pos == 0) down_up = 1;
+        }
+
+        gpio_put(LED_PIN, !gpio_get(LED_PIN));
+        sleep_ms(80);
+        clear_screen(0);
+        place_char(h_pos_cnt,vert_pos,'a', 1, 0);
+        h_pos_cnt++;
+    }
+}*/
+
+
 void set_seq_next(bool s)
 {
     seq_next = s;
@@ -107,7 +138,7 @@ bool get_seq_next()
     return seq_next;
 }
 
-gpio_irq_callback_t button_interrupt()
+void button_interrupt()
 {
     busy_wait_ms(200);
     /*uint8_t random = 0;

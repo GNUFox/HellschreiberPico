@@ -18,7 +18,7 @@ void checker_board(int pos_x, int pos_y, int size_x, int size_y, bool inverted);
 // interrupts
 void set_seq_next(bool s);
 bool get_seq_next();
-gpio_irq_callback_t button_interrupt();
+void button_interrupt();
 
 
 

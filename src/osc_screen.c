@@ -128,7 +128,7 @@ void output_screen_to_gpio()
         //cur_line = cur_line >> 1;
         //gpio_put(Z_MOD_PIN, (cur_line & 1UL));
         gpio_put(Z_MOD_PIN, !((screen[screen_cnt_hor] >> screen_cnt_vert) & 1UL));
-        busy_wait_at_least_cycles(75);
+        busy_wait_at_least_cycles(90);
          // Dies ist die Zeit für ein Pixel (ca.). Durch den 10-maligen Bildaufbau werden die 7ms eines Hell-Pixels erzeugt
                  // Formel: delay*pixel(pro Spalte)*2(wegen DoubleRes)+20µs(Vertikalbalenkungszeit)*10(Spalten) 11.7857*7*2+20*10
                  // ~ (sollte eig. 7ms ergeben sind aber 3499µs. auf oszi sind das aber ca. 7 - 7,9 ms ==> HÄ???)
