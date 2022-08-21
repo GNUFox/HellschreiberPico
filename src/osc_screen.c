@@ -59,42 +59,11 @@ void box(int i, int j)
   }
 }
 
-void checker_board(int i, int j)
-{
-  if(_inside_bounds(i,j) && _inside_margin(i,j,3))
-  {
-    if(i % 2)
-    {
-      if(j % 2)
-      {
-        set_pixel(i, j, true);
-      }
-      else
-      {
-        set_pixel(i, j, false);
-      }
-    }
-    else
-    {
-      if(j % 2)
-      {
-        set_pixel(i, j, false);
-      }
-      else
-      {
-        set_pixel(i, j, true);
-      }
-    }
-  }
-}
+
 
 void place_char(int i, int j, char c, int scale, int invert)
 {
-  c = toupper(c);
-  if(c >= 65 && c <= 90)
-  {
-    c-=65;
-  }
+  c = convert_to_hell_table(c);
 
   for(int a = 0; a < HELL_CHAR_COL_MAX*scale; a++)
   {

@@ -2,7 +2,9 @@
 #include <stdio.h>
 #include "pico/stdlib.h"
 #include "pico/multicore.h"
+#include "hardware/gpio.h"
 #include <string.h>
+#include <stdbool.h>
 
 #include "osc_screen.h"
 #include "hell_chars.h"
@@ -19,6 +21,8 @@ void core1_entry()
     gpio_set_dir(BUTTON, GPIO_IN);
     gpio_set_pulls(BUTTON, true, false);
 
+    gpio_set_irq_enabled_with_callback(BUTTON, GPIO_IRQ_EDGE_FALL, true, button_interrupt);
+    set_seq_next(false);
 
     int h_pos_cnt = -14;
     int vert_pos = 1;
@@ -46,42 +50,45 @@ void core1_entry()
         h_pos_cnt++;
     }*/
 
+    bool inverted = false;
+    for(int i = 0; i < 10 && !get_seq_next(); i++)
+    {
+        checker_board(20,5,20,10, inverted);
+        gpio_put(LED_PIN, !gpio_get(LED_PIN));
+        sleep_ms(500);
+        inverted = !inverted;
+    }
+
     char *welcome_strings[4];
     welcome_strings[0] = "HALLO";
     welcome_strings[1] = " IM  ";
     welcome_strings[2] = " REAL";
     welcome_strings[3] = " RAUM";
     
-    for(int i = 0; i < 2; i++)
+    for(int i = 0; i < 2 && !get_seq_next(); i++)
     {
-        /*for(int string_index = 0;string_index <4;string_index++)
-        {
-            gpio_put(LED_PIN, !gpio_get(LED_PIN));
-            sleep_ms(1000);
-            clear_screen(0);
-            print_string(welcome_strings[string_index], 2,2,1,0);
-        }*/
         sequential_string_display(welcome_strings, 4, SCALE_DOUBLE,NON_INVERTED);
     }
 
-    char str_hellschreiber[14] = "HELLSCHREIBER";
+    char *str_hellschreiber = "HELLSCHREIBER DEMO";
     init_scroll_text(str_hellschreiber, SCROLL_RIGHT_TO_LEFT);
-    //int scroll_pos_x = HOR_MAX;
-    while(gpio_get(BUTTON))
-    {
-        /*
-        if(scroll_pos_x < -14*HELL_CHAR_COL_MAX*2)
-        {
-            scroll_pos_x = HOR_MAX;
-        }
-        sleep_ms(50);
-        clear_screen(0);
-        print_string(str_hellschreiber, scroll_pos_x, 2, 1, 0);
-        scroll_pos_x--;*/
-        scroll_text(SCALE_DOUBLE,NON_INVERTED);
-    }
 
-    print_string("IDLE", 2,2,SCALE_DOUBLE,NON_INVERTED);
+    while(!get_seq_next())
+    {
+        scroll_text(SCALE_DOUBLE,NON_INVERTED, 25);
+    }
+    clear_screen(SCREEN_EMPTY);
+
+    sleep_ms(500);
+
+    
+    while(1 && !get_seq_next())
+    {
+        clear_screen(SCREEN_EMPTY);
+        print_string(" IDLE ", 2,0,SCALE_DOUBLE,inverted ? INVERTED : NON_INVERTED);
+        inverted=!inverted;
+        sleep_ms(1000);
+    }
     
 }
 
