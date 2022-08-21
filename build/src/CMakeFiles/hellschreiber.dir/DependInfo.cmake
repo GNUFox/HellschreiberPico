@@ -41,6 +41,7 @@ set(CMAKE_TARGET_DEFINITIONS_ASM
   "LIB_PICO_MALLOC=1"
   "LIB_PICO_MEM_OPS=1"
   "LIB_PICO_MEM_OPS_PICO=1"
+  "LIB_PICO_MULTICORE=1"
   "LIB_PICO_PLATFORM=1"
   "LIB_PICO_PRINTF=1"
   "LIB_PICO_PRINTF_PICO=1"
@@ -117,6 +118,7 @@ set(CMAKE_ASM_TARGET_INCLUDE_PATH
   "/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_unique_id/include"
   "/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/hardware_flash/include"
   "/home/mr/Dokumente/Projekte/pico/pico-sdk/src/common/pico_usb_reset_interface/include"
+  "/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_multicore/include"
   )
 
 # The set of dependency files which are needed:
@@ -168,6 +170,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_float/float_init_rom.c" "src/CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.obj" "gcc" "src/CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.obj.d"
   "/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_float/float_math.c" "src/CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_float/float_math.c.obj" "gcc" "src/CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_float/float_math.c.obj.d"
   "/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c" "src/CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.obj" "gcc" "src/CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.obj.d"
+  "/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c" "src/CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj" "gcc" "src/CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj.d"
   "/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_platform/platform.c" "src/CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_platform/platform.c.obj" "gcc" "src/CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_platform/platform.c.obj.d"
   "/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_printf/printf.c" "src/CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_printf/printf.c.obj" "gcc" "src/CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_printf/printf.c.obj.d"
   "/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_runtime/runtime.c" "src/CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj" "gcc" "src/CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj.d"

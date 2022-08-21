@@ -1038,6 +1038,20 @@ src/CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/hardware_flash/flash.c.s"
 	cd /home/mr/Dokumente/Projekte/HellschreiberPico/build/src && /usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/hardware_flash/flash.c -o CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/hardware_flash/flash.c.s
 
+src/CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj: src/CMakeFiles/hellschreiber.dir/flags.make
+src/CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj: /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c
+src/CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj: src/CMakeFiles/hellschreiber.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/mr/Dokumente/Projekte/HellschreiberPico/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Building C object src/CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj"
+	cd /home/mr/Dokumente/Projekte/HellschreiberPico/build/src && /usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj -MF CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj.d -o CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj -c /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c
+
+src/CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.i"
+	cd /home/mr/Dokumente/Projekte/HellschreiberPico/build/src && /usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c > CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.i
+
+src/CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.s"
+	cd /home/mr/Dokumente/Projekte/HellschreiberPico/build/src && /usr/bin/arm-none-eabi-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c -o CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.s
+
 # Object files for target hellschreiber
 hellschreiber_OBJECTS = \
 "CMakeFiles/hellschreiber.dir/hellschreiber.c.obj" \
@@ -1109,7 +1123,8 @@ hellschreiber_OBJECTS = \
 "CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj" \
 "CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.obj" \
 "CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.obj" \
-"CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj"
+"CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj" \
+"CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj"
 
 # External object files for target hellschreiber
 hellschreiber_EXTERNAL_OBJECTS =
@@ -1184,11 +1199,12 @@ src/hellschreiber.elf: src/CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projek
 src/hellschreiber.elf: src/CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.obj
 src/hellschreiber.elf: src/CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.obj
 src/hellschreiber.elf: src/CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj
+src/hellschreiber.elf: src/CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj
 src/hellschreiber.elf: src/CMakeFiles/hellschreiber.dir/build.make
 src/hellschreiber.elf: src/libosc_screen.a
 src/hellschreiber.elf: pico-sdk/src/rp2_common/boot_stage2/bs2_default_padded_checksummed.S
 src/hellschreiber.elf: src/CMakeFiles/hellschreiber.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/mr/Dokumente/Projekte/HellschreiberPico/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Linking CXX executable hellschreiber.elf"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/mr/Dokumente/Projekte/HellschreiberPico/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_72) "Linking CXX executable hellschreiber.elf"
 	cd /home/mr/Dokumente/Projekte/HellschreiberPico/build/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/hellschreiber.dir/link.txt --verbose=$(VERBOSE)
 	cd /home/mr/Dokumente/Projekte/HellschreiberPico/build/src && /usr/bin/arm-none-eabi-objcopy -Oihex /home/mr/Dokumente/Projekte/HellschreiberPico/build/src/hellschreiber.elf hellschreiber.hex
 	cd /home/mr/Dokumente/Projekte/HellschreiberPico/build/src && /usr/bin/arm-none-eabi-objcopy -Obinary /home/mr/Dokumente/Projekte/HellschreiberPico/build/src/hellschreiber.elf hellschreiber.bin

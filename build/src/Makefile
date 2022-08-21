@@ -1454,6 +1454,30 @@ home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aea
 	cd /home/mr/Dokumente/Projekte/HellschreiberPico/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/hellschreiber.dir/build.make src/CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.obj
 .PHONY : home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.obj
 
+home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.obj: home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj
+.PHONY : home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.obj
+
+# target to build an object file
+home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj:
+	cd /home/mr/Dokumente/Projekte/HellschreiberPico/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/hellschreiber.dir/build.make src/CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj
+.PHONY : home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj
+
+home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.i: home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.i
+.PHONY : home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.i
+
+# target to preprocess a source file
+home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.i:
+	cd /home/mr/Dokumente/Projekte/HellschreiberPico/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/hellschreiber.dir/build.make src/CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.i
+.PHONY : home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.i
+
+home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.s: home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.s
+.PHONY : home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.s
+
+# target to generate assembly for a file
+home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.s:
+	cd /home/mr/Dokumente/Projekte/HellschreiberPico/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/hellschreiber.dir/build.make src/CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.s
+.PHONY : home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.s
+
 home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_platform/platform.obj: home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_platform/platform.c.obj
 .PHONY : home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_platform/platform.obj
 
@@ -1961,6 +1985,9 @@ help:
 	@echo "... home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.i"
 	@echo "... home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.s"
 	@echo "... home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.obj"
+	@echo "... home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.obj"
+	@echo "... home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.i"
+	@echo "... home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.s"
 	@echo "... home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_platform/platform.obj"
 	@echo "... home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_platform/platform.i"
 	@echo "... home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_platform/platform.s"

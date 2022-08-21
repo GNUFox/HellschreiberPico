@@ -103,6 +103,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.obj"
   "CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.obj.d"
   "CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.obj"
+  "CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj"
+  "CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj.d"
   "CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_platform/platform.c.obj"
   "CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_platform/platform.c.obj.d"
   "CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_printf/printf.c.obj"

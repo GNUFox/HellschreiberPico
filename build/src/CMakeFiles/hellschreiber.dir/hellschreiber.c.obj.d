@@ -56,4 +56,11 @@ src/CMakeFiles/hellschreiber.dir/hellschreiber.c.obj: \
  /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/dreq.h \
  /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_stdio_uart/include/pico/stdio_uart.h \
  /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb.h \
+ /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_multicore/include/pico/multicore.h \
+ /home/mr/Dokumente/Projekte/pico/pico-sdk/src/common/pico_sync/include/pico/sync.h \
+ /home/mr/Dokumente/Projekte/pico/pico-sdk/src/common/pico_sync/include/pico/sem.h \
+ /home/mr/Dokumente/Projekte/pico/pico-sdk/src/common/pico_sync/include/pico/lock_core.h \
+ /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/hardware_sync/include/hardware/sync.h \
+ /home/mr/Dokumente/Projekte/pico/pico-sdk/src/common/pico_sync/include/pico/mutex.h \
+ /home/mr/Dokumente/Projekte/pico/pico-sdk/src/common/pico_sync/include/pico/critical_section.h \
  /home/mr/Dokumente/Projekte/HellschreiberPico/src/osc_screen.h

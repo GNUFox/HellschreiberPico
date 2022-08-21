@@ -36,4 +36,12 @@ src/CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp
  /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/sio.h \
  /home/mr/Dokumente/Projekte/pico/pico-sdk/src/common/pico_base/include/pico/types.h \
  /home/mr/Dokumente/Projekte/pico/pico-sdk/src/common/pico_base/include/pico/error.h \
- /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_malloc/include/pico/malloc.h
+ /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_malloc/include/pico/malloc.h \
+ /home/mr/Dokumente/Projekte/pico/pico-sdk/src/common/pico_sync/include/pico/mutex.h \
+ /home/mr/Dokumente/Projekte/pico/pico-sdk/src/common/pico_sync/include/pico/lock_core.h \
+ /home/mr/Dokumente/Projekte/pico/pico-sdk/src/common/pico_time/include/pico/time.h \
+ /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/hardware_timer/include/hardware/timer.h \
+ /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/timer.h \
+ /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/hardware_base/include/hardware/address_mapped.h \
+ /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/timer.h \
+ /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/hardware_sync/include/hardware/sync.h

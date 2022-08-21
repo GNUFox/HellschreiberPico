@@ -71,6 +71,13 @@ src/CMakeFiles/hellschreiber.dir/hellschreiber.c.obj: /home/mr/Dokumente/Projekt
   /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/dreq.h \
   /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_stdio_uart/include/pico/stdio_uart.h \
   /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb.h \
+  /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_multicore/include/pico/multicore.h \
+  /home/mr/Dokumente/Projekte/pico/pico-sdk/src/common/pico_sync/include/pico/sync.h \
+  /home/mr/Dokumente/Projekte/pico/pico-sdk/src/common/pico_sync/include/pico/sem.h \
+  /home/mr/Dokumente/Projekte/pico/pico-sdk/src/common/pico_sync/include/pico/lock_core.h \
+  /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/hardware_sync/include/hardware/sync.h \
+  /home/mr/Dokumente/Projekte/pico/pico-sdk/src/common/pico_sync/include/pico/mutex.h \
+  /home/mr/Dokumente/Projekte/pico/pico-sdk/src/common/pico_sync/include/pico/critical_section.h \
   /home/mr/Dokumente/Projekte/HellschreiberPico/src/osc_screen.h
 
 src/CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.obj: /home/mr/Dokumente/Projekte/pico/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c \
@@ -2117,7 +2124,63 @@ src/CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp
   /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/sio.h \
   /home/mr/Dokumente/Projekte/pico/pico-sdk/src/common/pico_base/include/pico/types.h \
   /home/mr/Dokumente/Projekte/pico/pico-sdk/src/common/pico_base/include/pico/error.h \
-  /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_malloc/include/pico/malloc.h
+  /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_malloc/include/pico/malloc.h \
+  /home/mr/Dokumente/Projekte/pico/pico-sdk/src/common/pico_sync/include/pico/mutex.h \
+  /home/mr/Dokumente/Projekte/pico/pico-sdk/src/common/pico_sync/include/pico/lock_core.h \
+  /home/mr/Dokumente/Projekte/pico/pico-sdk/src/common/pico_time/include/pico/time.h \
+  /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/hardware_timer/include/hardware/timer.h \
+  /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/timer.h \
+  /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/hardware_base/include/hardware/address_mapped.h \
+  /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/timer.h \
+  /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/hardware_sync/include/hardware/sync.h
+
+src/CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c.obj: /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c \
+  /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_multicore/include/pico/multicore.h \
+  /home/mr/Dokumente/Projekte/pico/pico-sdk/src/common/pico_base/include/pico/types.h \
+  /home/mr/Dokumente/Projekte/pico/pico-sdk/src/common/pico_base/include/pico/assert.h \
+  /usr/lib/gcc/arm-none-eabi/10.3.1/include/stdbool.h \
+  /usr/include/newlib/assert.h \
+  /usr/include/newlib/_ansi.h \
+  /usr/include/newlib/newlib.h \
+  /usr/include/newlib/_newlib_version.h \
+  /usr/include/newlib/sys/config.h \
+  /usr/include/newlib/machine/ieeefp.h \
+  /usr/include/newlib/sys/features.h \
+  /usr/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h \
+  /usr/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h \
+  /home/mr/Dokumente/Projekte/pico/pico-sdk/src/common/pico_sync/include/pico/sync.h \
+  /home/mr/Dokumente/Projekte/pico/pico-sdk/src/common/pico_sync/include/pico/sem.h \
+  /home/mr/Dokumente/Projekte/pico/pico-sdk/src/common/pico_sync/include/pico/lock_core.h \
+  /home/mr/Dokumente/Projekte/pico/pico-sdk/src/common/pico_base/include/pico.h \
+  /home/mr/Dokumente/Projekte/pico/pico-sdk/src/common/pico_base/include/pico/types.h \
+  generated/pico_base/pico/version.h \
+  /home/mr/Dokumente/Projekte/pico/pico-sdk/src/common/pico_base/include/pico/config.h \
+  generated/pico_base/pico/config_autogen.h \
+  /home/mr/Dokumente/Projekte/pico/pico-sdk/src/boards/include/boards/pico.h \
+  /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/cmsis/include/cmsis/rename_exceptions.h \
+  /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_platform/include/pico/platform.h \
+  /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/platform_defs.h \
+  /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/addressmap.h \
+  /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/sio.h \
+  /usr/include/newlib/sys/cdefs.h \
+  /usr/include/newlib/machine/_default_types.h \
+  /home/mr/Dokumente/Projekte/pico/pico-sdk/src/common/pico_base/include/pico/error.h \
+  /home/mr/Dokumente/Projekte/pico/pico-sdk/src/common/pico_time/include/pico/time.h \
+  /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/hardware_timer/include/hardware/timer.h \
+  /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/timer.h \
+  /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/hardware_base/include/hardware/address_mapped.h \
+  /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/timer.h \
+  /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/hardware_sync/include/hardware/sync.h \
+  /home/mr/Dokumente/Projekte/pico/pico-sdk/src/common/pico_sync/include/pico/mutex.h \
+  /home/mr/Dokumente/Projekte/pico/pico-sdk/src/common/pico_sync/include/pico/critical_section.h \
+  /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/sio.h \
+  /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/interp.h \
+  /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/hardware_irq/include/hardware/irq.h \
+  /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/intctrl.h \
+  /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/m0plus.h \
+  /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/scb.h \
+  /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/psm.h \
+  /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/hardware_claim/include/hardware/claim.h
 
 src/CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_platform/platform.c.obj: /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_platform/platform.c \
   /home/mr/Dokumente/Projekte/pico/pico-sdk/src/common/pico_base/include/pico.h \
@@ -2908,15 +2971,15 @@ src/CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp
 
 /home/mr/Dokumente/Projekte/pico/pico-sdk/src/common/pico_time/include/pico/timeout_helper.h:
 
-/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c:
-
-/home/mr/Dokumente/Projekte/pico/pico-sdk/src/common/pico_sync/include/pico/sync.h:
-
 /home/mr/Dokumente/Projekte/pico/pico-sdk/src/common/pico_util/include/pico/util/pheap.h:
 
 /usr/include/newlib/c++/10.3.1/stdlib.h:
 
 /usr/include/newlib/sys/_intsup.h:
+
+/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c:
+
+/home/mr/Dokumente/Projekte/pico/pico-sdk/src/common/pico_sync/lock_core.c:
 
 /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/io_bank0.h:
 
@@ -2933,6 +2996,10 @@ src/CMakeFiles/hellschreiber.dir/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp
 /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/timer.h:
 
 /home/mr/Dokumente/Projekte/pico/pico-sdk/lib/tinyusb/src/tusb.c:
+
+/home/mr/Dokumente/Projekte/pico/pico-sdk/src/common/pico_sync/mutex.c:
+
+/home/mr/Dokumente/Projekte/pico/pico-sdk/src/common/pico_time/include/pico/time.h:
 
 /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c:
 
@@ -3050,10 +3117,6 @@ generated/pico_base/pico/version.h:
 
 /home/mr/Dokumente/Projekte/pico/pico-sdk/src/boards/include/boards/pico.h:
 
-/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_printf/include/pico/printf.h:
-
-/usr/include/newlib/sys/stdio.h:
-
 /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c:
 
 /usr/include/newlib/machine/_types.h:
@@ -3077,6 +3140,12 @@ generated/pico_base/pico/version.h:
 /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/usb.h:
 
 /usr/include/newlib/sys/_pthreadtypes.h:
+
+/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_printf/include/pico/printf.h:
+
+/usr/include/newlib/sys/stdio.h:
+
+/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_multicore/include/pico/multicore.h:
 
 /usr/include/newlib/machine/endian.h:
 
@@ -3138,15 +3207,37 @@ generated/pico_base/pico/version.h:
 
 /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/uart.h:
 
-/home/mr/Dokumente/Projekte/pico/pico-sdk/src/common/pico_time/include/pico/time.h:
-
-/home/mr/Dokumente/Projekte/pico/pico-sdk/src/common/pico_sync/mutex.c:
-
 /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/uart.h:
 
 /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/dreq.h:
 
 /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_stdio_uart/include/pico/stdio_uart.h:
+
+/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c:
+
+/home/mr/Dokumente/Projekte/pico/pico-sdk/src/common/pico_sync/include/pico/sync.h:
+
+/home/mr/Dokumente/Projekte/pico/pico-sdk/src/common/pico_sync/include/pico/lock_core.h:
+
+/home/mr/Dokumente/Projekte/pico/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c:
+
+/usr/include/newlib/machine/types.h:
+
+/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/hardware_sync/include/hardware/sync.h:
+
+/usr/include/newlib/c++/10.3.1/pstl/pstl_config.h:
+
+/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c:
+
+/home/mr/Dokumente/Projekte/pico/pico-sdk/src/common/pico_sync/include/pico/critical_section.h:
+
+/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_double/include/pico/double.h:
+
+/usr/lib/gcc/arm-none-eabi/10.3.1/include-fixed/limits.h:
+
+/home/mr/Dokumente/Projekte/pico/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c:
+
+/home/mr/Dokumente/Projekte/pico/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c:
 
 /usr/lib/gcc/arm-none-eabi/10.3.1/include/stdbool.h:
 
@@ -3192,26 +3283,6 @@ generated/pico_base/pico/version.h:
 
 /home/mr/Dokumente/Projekte/pico/pico-sdk/lib/tinyusb/src/common/tusb_error.h:
 
-/home/mr/Dokumente/Projekte/pico/pico-sdk/src/common/pico_sync/include/pico/lock_core.h:
-
-/home/mr/Dokumente/Projekte/pico/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c:
-
-/usr/include/newlib/machine/types.h:
-
-/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/hardware_sync/include/hardware/sync.h:
-
-/usr/include/newlib/c++/10.3.1/pstl/pstl_config.h:
-
-/home/mr/Dokumente/Projekte/pico/pico-sdk/src/common/pico_sync/include/pico/critical_section.h:
-
-/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_double/include/pico/double.h:
-
-/usr/lib/gcc/arm-none-eabi/10.3.1/include-fixed/limits.h:
-
-/home/mr/Dokumente/Projekte/pico/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c:
-
-/home/mr/Dokumente/Projekte/pico/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c:
-
 /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/hardware_sync/sync.c:
 
 /home/mr/Dokumente/Projekte/pico/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.h:
@@ -3231,10 +3302,6 @@ generated/pico_base/pico/version.h:
 /home/mr/Dokumente/Projekte/pico/pico-sdk/lib/tinyusb/src/device/dcd_attr.h:
 
 /home/mr/Dokumente/Projekte/pico/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.h:
-
-/home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c:
-
-/home/mr/Dokumente/Projekte/pico/pico-sdk/src/common/pico_sync/lock_core.c:
 
 /home/mr/Dokumente/Projekte/pico/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/timer.h:
 
