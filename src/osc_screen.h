@@ -14,6 +14,11 @@
 #define Z_MOD_PIN 11
 #define TRIG_PIN 10 
 
+#define SCALE_NORM 1
+#define SCALE_DOUBLE 2
+#define NON_INVERTED 0
+#define INVERTED 1
+
 #define MULTIPLIER 0.5
 
 void init_screen();
@@ -22,8 +27,8 @@ void fill_screen();
 void box(int i, int j);
 void checker_board(int i, int j);
 void set_pixel(int i, int j, int on_off);
-void place_char(int i, int j, char c, int double_scale, int invert);
-void print_string(char* str, int pos_x, int pos_y, int double_scale, int inverted);
+void place_char(int i, int j, char c, int scale, int invert);
+void print_string(char* str, int pos_x, int pos_y, int scale, int inverted);
 
 void output_screen_to_gpio();
 

@@ -61,13 +61,15 @@ void core1_entry()
             clear_screen(0);
             print_string(welcome_strings[string_index], 2,2,1,0);
         }*/
-        sequential_string_display(welcome_strings, 4, 1,0);
+        sequential_string_display(welcome_strings, 4, SCALE_DOUBLE,NON_INVERTED);
     }
 
     char str_hellschreiber[14] = "HELLSCHREIBER";
-    int scroll_pos_x = HOR_MAX;
+    init_scroll_text(str_hellschreiber, SCROLL_RIGHT_TO_LEFT);
+    //int scroll_pos_x = HOR_MAX;
     while(gpio_get(BUTTON))
     {
+        /*
         if(scroll_pos_x < -14*HELL_CHAR_COL_MAX*2)
         {
             scroll_pos_x = HOR_MAX;
@@ -75,10 +77,11 @@ void core1_entry()
         sleep_ms(50);
         clear_screen(0);
         print_string(str_hellschreiber, scroll_pos_x, 2, 1, 0);
-        scroll_pos_x--;
+        scroll_pos_x--;*/
+        scroll_text(SCALE_DOUBLE,NON_INVERTED);
     }
 
-    print_string("IDLE", 2,2,1,0);
+    print_string("IDLE", 2,2,SCALE_DOUBLE,NON_INVERTED);
     
 }
 

@@ -88,37 +88,31 @@ void checker_board(int i, int j)
   }
 }
 
-void place_char(int i, int j, char c, int double_scale, int invert)
+void place_char(int i, int j, char c, int scale, int invert)
 {
-  int s = 1;
-  if(double_scale == 1) s = 2;
-
   c = toupper(c);
   if(c >= 65 && c <= 90)
   {
     c-=65;
   }
 
-  for(int a = 0; a < HELL_CHAR_COL_MAX*s; a++)
+  for(int a = 0; a < HELL_CHAR_COL_MAX*scale; a++)
   {
-    //screen[10+a] = hell_bitmaps[0][a];
-    for(int b = 0; b < HELL_CHAR_COL_MAX*s; b++)
+    for(int b = 0; b < HELL_CHAR_COL_MAX*scale; b++)
     {
-      set_pixel(a+i, b+j, ((hell_bitmaps[c][a/s] >> b/s) & 1UL) ^ (invert == 0));
+      set_pixel(a+i, b+j, ((hell_bitmaps[c][a/scale] >> b/scale) & 1UL) ^ (invert == 0));
     }
   }
 }
 
-void print_string(char* str, int pos_x, int pos_y, int double_scale, int inverted)
+void print_string(char* str, int pos_x, int pos_y, int scale, int inverted)
 {
   char* current_c = str;
-  int s = 1;
-  if(double_scale == 1) s = 2;
 
   while(*current_c != '\0')
   {
-    place_char(pos_x, pos_y, *current_c, double_scale, inverted);
-    pos_x+=HELL_CHAR_COL_MAX*s;
+    place_char(pos_x, pos_y, *current_c, scale, inverted);
+    pos_x+=HELL_CHAR_COL_MAX*scale;
     current_c++;
   }
 }
