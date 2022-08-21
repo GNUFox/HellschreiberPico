@@ -17,11 +17,13 @@
 #define MULTIPLIER 0.5
 
 void init_screen();
+void clear_screen(int fill);
 void fill_screen();
 void box(int i, int j);
 void checker_board(int i, int j);
 void set_pixel(int i, int j, int on_off);
-void place_char(int i, int j, int c);
+void place_char(int i, int j, char c, int double_scale, int invert);
+void print_string(char* str, int pos_x, int pos_y, int double_scale, int inverted);
 
 void output_screen_to_gpio();
 

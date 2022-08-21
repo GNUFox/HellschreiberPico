@@ -1,6 +1,7 @@
 #include "osc_screen.h"
 #include "hell_chars.h"
 #include "pico/stdlib.h"
+#include <ctype.h>
 
 //extern uint64_t screen[HOR_MAX];
 uint64_t screen[HOR_MAX];
@@ -9,7 +10,7 @@ void init_screen()
 {
     for(int i = 0; i < HOR_MAX; i++)
     {
-        screen[i] = 0;
+        screen[i] = 1;
     }
     gpio_init(V_PIN);
     gpio_init(TRIG_PIN);
@@ -22,17 +23,26 @@ void init_screen()
     gpio_set_drive_strength(V_PIN, GPIO_DRIVE_STRENGTH_12MA);
 }
 
+void clear_screen(int fill)
+{
+  for(int i = 0; i<HOR_MAX; i++)
+  {
+    screen[i] = fill;
+  }
+}
+
 void fill_screen()
 {
     for (int i = 0; i < HOR_MAX; i++)
     {
         for (int j = 0; j < VERT_MAX; j++)
         {
-            box(i, j);
-            checker_board(i,j);
+            //box(i, j);
+            //checker_board(i,j);
         }
     }
-    place_char(2,2,0);
+    //place_char(20,2,1);
+    //place_char(10,2,0);
 }
 
 void box(int i, int j)
@@ -78,18 +88,38 @@ void checker_board(int i, int j)
   }
 }
 
-void place_char(int i, int j, int c)
+void place_char(int i, int j, char c, int double_scale, int invert)
 {
-  if(_inside_bounds(i,j))
+  int s = 1;
+  if(double_scale == 1) s = 2;
+
+  c = toupper(c);
+  if(c >= 65 && c <= 90)
   {
-    for(int a = 0; a < HELL_CHAR_COL_MAX*2; a++)
+    c-=65;
+  }
+
+  for(int a = 0; a < HELL_CHAR_COL_MAX*s; a++)
+  {
+    //screen[10+a] = hell_bitmaps[0][a];
+    for(int b = 0; b < HELL_CHAR_COL_MAX*s; b++)
     {
-      //screen[10+a] = hell_bitmaps[0][a];
-      for(int b = 0; b < HELL_CHAR_COL_MAX*2; b++)
-      {
-        set_pixel(a+10, b, (hell_bitmaps[0][a/2] >> b/2) & 1UL);
-      }
+      set_pixel(a+i, b+j, ((hell_bitmaps[c][a/s] >> b/s) & 1UL) ^ (invert == 0));
     }
+  }
+}
+
+void print_string(char* str, int pos_x, int pos_y, int double_scale, int inverted)
+{
+  char* current_c = str;
+  int s = 1;
+  if(double_scale == 1) s = 2;
+
+  while(*current_c != '\0')
+  {
+    place_char(pos_x, pos_y, *current_c, double_scale, inverted);
+    pos_x+=HELL_CHAR_COL_MAX*s;
+    current_c++;
   }
 }
 
@@ -105,13 +135,16 @@ int _inside_margin(int i, int j, int margin)
 
 void set_pixel(int i, int j, int on_off)
 {
-  if(on_off)
+  if (i >= 0 && i < HOR_MAX)
   {
-    screen[i] &= ~(1UL << j);
-  }
-  else
-  {
-    screen[i] |= 1UL << j;
+    if(on_off)
+    {
+      screen[i] &= ~(1UL << j);
+    }
+    else
+    {
+      screen[i] |= 1UL << j;
+    }
   }
 }
 

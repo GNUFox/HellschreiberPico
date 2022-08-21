@@ -1,9 +1,12 @@
 
+add_library(hell_chars hell_chars.c)
 add_library(osc_screen osc_screen.c)
+add_library(demo_functions demo_functions.c)
 add_executable(hellschreiber hellschreiber.c)
 
 pico_enable_stdio_usb(hellschreiber 1)
 pico_enable_stdio_uart(hellschreiber 1)
 pico_add_extra_outputs(hellschreiber)
 target_link_libraries(osc_screen pico_stdlib)
-target_link_libraries(hellschreiber osc_screen pico_stdlib pico_multicore)
+target_link_libraries(demo_functions osc_screen)
+target_link_libraries(hellschreiber osc_screen pico_stdlib pico_multicore hell_chars demo_functions)
