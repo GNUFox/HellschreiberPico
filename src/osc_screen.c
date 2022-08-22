@@ -130,6 +130,7 @@ void output_screen_to_gpio()
         //current_line = screen[screen_cnt_hor];
         for (int screen_cnt_vert = VERT_MAX-1; screen_cnt_vert >= 0;screen_cnt_vert--)
         {
+          // about 120 clock cycles (120 = 75 + gpio_put)
           //current_line = current_line >> 1;
           //gpio_put(Z_MOD_PIN, !(current_line & 1UL));
           gpio_put(Z_MOD_PIN, !((screen[screen_cnt_hor] >> screen_cnt_vert) & 1UL));

@@ -20,6 +20,8 @@ void set_seq_next(bool s);
 bool get_seq_next();
 void button_interrupt();
 
+// misc
+uint8_t get_random_number();
 
 
 #endif

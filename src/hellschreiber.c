@@ -3,12 +3,17 @@
 #include "pico/stdlib.h"
 #include "pico/multicore.h"
 #include "hardware/gpio.h"
+#include "hardware/pio.h"
+#include "hardware/clocks.h"
 #include <string.h>
 #include <stdbool.h>
 
 #include "osc_screen.h"
 #include "hell_chars.h"
 #include "demo_functions.h"
+
+#include "verticaldef.pio.h"
+#include "readfbzmod.pio.h"
 
 void core1_entry()
 {
@@ -86,6 +91,15 @@ void core1_entry()
     
 }
 
+//#define MAIN_RUN
+#define DEBUG_RUN
+#define DEBUG_PIO_OR_CPU
+
+void pio_irq_function()
+{
+    printf("Hello from interrupt %d\n", get_random_number());
+}
+
 int main()
 {
     // overlock
@@ -93,6 +107,8 @@ int main()
 
 
     stdio_init_all();
+
+    #ifdef MAIN_RUN
     multicore_launch_core1(core1_entry);
     const uint LED_PIN = PICO_DEFAULT_LED_PIN;
     gpio_init(LED_PIN);
@@ -102,8 +118,54 @@ int main()
     fill_screen();
 
     output_screen_to_gpio(); // endless loop
+    #endif
+
+    // Testing Vertical deflection only (because of high jitter)
+    #ifdef DEBUG_RUN
+    init_screen();
+    int x = 1000;
+    #ifdef DEBUG_PIO_OR_CPU
+
+    float pio_0_freq = 4.7*16666/x; // TODO: adjust for real operation
+    float pio_1_freq = 4.7*16666/x; // TODO: adjust for real operation
+    PIO pio_0 = pio0;
+    PIO pio_1 = pio1;
+
+    uint sm_0 = pio_claim_unused_sm(pio_0, true);
+    uint sm_1 = pio_claim_unused_sm(pio_1, true);
+
+    uint offset_0 = pio_add_program(pio_0, &verticaldef_program);
+    uint offset_1 = pio_add_program(pio_1, &readfbzmod_program);
+
+    float div_0 = (float)clock_get_hz(clk_sys) / pio_0_freq;
+    float div_1 = (float)clock_get_hz(clk_sys) / pio_1_freq;
+    //float div = 
+
+    verticaldef_program_init(pio_0, sm_0, offset_0, V_PIN, div_0);
+    readfbzmod_program_init(pio_1, sm_1, offset_1, PICO_DEFAULT_LED_PIN, div_1);
+
+    pio_sm_set_enabled(pio_0, sm_0, true);
+    pio_sm_set_enabled(pio_1, sm_1, true);
+
+    while(1)
+    {
+        sleep_ms(1000);
+        printf("Sleeping %d\n", get_random_number());
+    }
+    #else
+    while(1)
+    {
+        gpio_put(V_PIN, true);
+        busy_wait_at_least_cycles(50*x);
+        gpio_put(V_PIN, false);
+        busy_wait_at_least_cycles(6720*x);
+    }
+    #endif
+    #endif
 
     return 0;
 }
+
+
 
 

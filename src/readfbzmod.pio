@@ -1,0 +1,46 @@
+.program readfbzmod
+
+; generate z mod signal (read frame / line buffer)
+; A / B register update from CPU
+; Send Interrupt to pio0 for vertical deflection
+; Send Interrupt to CPU for trigger
+
+
+.wrap_target
+    set pins, 1 [31]
+    set pins, 0 [31] 
+    nop [31]
+    nop [31]
+    nop [31]
+    nop [31]
+    nop [31]
+    nop [31]
+    nop [31]
+    nop [31]
+    nop [31]
+    nop [31]
+    nop [31]
+    nop [31]
+    nop [31]
+    nop [31]
+    nop [31]
+.wrap
+
+% c-sdk {
+
+void readfbzmod_program_init(PIO pio, uint sm, uint offset, uint zmod_pin, float div) {
+
+    pio_sm_config c = readfbzmod_program_get_default_config(offset);
+
+    pio_gpio_init(pio, zmod_pin);
+
+    sm_config_set_set_pins(&c, zmod_pin, 1);
+
+    pio_sm_set_consecutive_pindirs(pio, sm, zmod_pin, 1, true);
+    
+    sm_config_set_clkdiv(&c, div);
+
+    pio_sm_init(pio, sm, offset, &c);
+}
+
+%}

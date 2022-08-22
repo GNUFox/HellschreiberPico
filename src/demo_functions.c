@@ -150,3 +150,13 @@ void button_interrupt()
 
     set_seq_next(true);
 }
+
+uint8_t get_random_number()
+{
+    uint8_t random = 0;
+    for(int i = 0; i < 8; i++)
+    {
+        random |= rosc_hw->randombit << i;
+    }
+    return random;
+}
