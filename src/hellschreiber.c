@@ -107,6 +107,11 @@ int main()
 
 
     stdio_init_all();
+    printf("NEW START\n");
+
+    init_screen();
+    clear_screen(SCREEN_EMPTY);
+    //print_string("TEST", 0, 0, SCAL, NON_INVERTED);
 
     #ifdef MAIN_RUN
     multicore_launch_core1(core1_entry);
@@ -122,12 +127,16 @@ int main()
 
     // Testing Vertical deflection only (because of high jitter)
     #ifdef DEBUG_RUN
-    init_screen();
-    int x = 1000;
-    #ifdef DEBUG_PIO_OR_CPU
 
-    float pio_0_freq = 4.7*16666/x; // TODO: adjust for real operation
-    float pio_1_freq = 4.7*16666/x; // TODO: adjust for real operation
+
+
+    #ifdef DEBUG_PIO_OR_CPU
+    multicore_launch_core1(core1_entry);
+
+
+    float pio_0_freq = 4.7*16666; // TODO: adjust for real operation
+    //float pio_1_freq = 4.7*16666;//4.7*16666/x; // TODO: adjust for real operation
+    float pio_1_freq = 4.7*16666*3;
     PIO pio_0 = pio0;
     PIO pio_1 = pio1;
 
@@ -141,16 +150,24 @@ int main()
     float div_1 = (float)clock_get_hz(clk_sys) / pio_1_freq;
     //float div = 
 
-    verticaldef_program_init(pio_0, sm_0, offset_0, V_PIN, div_0);
-    readfbzmod_program_init(pio_1, sm_1, offset_1, PICO_DEFAULT_LED_PIN, div_1);
+    //verticaldef_program_init(pio_0, sm_0, offset_0, V_PIN, div_0);
+    readfbzmod_program_init(pio_1, sm_1, offset_1, Z_MOD_PIN, V_PIN, div_1);
 
-    pio_sm_set_enabled(pio_0, sm_0, true);
+    //pio_sm_set_enabled(pio_0, sm_0, true);
     pio_sm_set_enabled(pio_1, sm_1, true);
 
+    //uint32_t line = 0b01010101010101010101010101010101;
+    uint32_t line = 0b00110101010101010101010101010100;
     while(1)
     {
-        sleep_ms(1000);
-        printf("Sleeping %d\n", get_random_number());
+        // Frame Trigger
+        gpio_put(TRIG_PIN, true);
+        gpio_put(TRIG_PIN, false);
+        for(int i = 0; i < HOR_MAX; i++)
+        {
+            pio_sm_put_blocking(pio_1, sm_1, screen[i]);
+        }
+        
     }
     #else
     while(1)

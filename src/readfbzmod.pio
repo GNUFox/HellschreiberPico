@@ -7,40 +7,41 @@
 
 
 .wrap_target
-    set pins, 1 [31]
-    set pins, 0 [31] 
-    nop [31]
-    nop [31]
-    nop [31]
-    nop [31]
-    nop [31]
-    nop [31]
-    nop [31]
-    nop [31]
-    nop [31]
-    nop [31]
-    nop [31]
-    nop [31]
-    nop [31]
-    nop [31]
-    nop [31]
+    pull
+    set x, 31 ; line pixel counter ;TODO: increased vertical pixel count to 32 that is easier
+
+    set pins, 1 [2] ; vert deflection charge
+    set pins, 0     ; trigger low
+
+    line_loop:
+        out pins, 1
+        jmp x-- line_loop
 .wrap
 
 % c-sdk {
 
-void readfbzmod_program_init(PIO pio, uint sm, uint offset, uint zmod_pin, float div) {
+void readfbzmod_program_init(PIO pio, uint sm, uint offset, uint zmod_pin, uint vert_pin, float div) {
 
     pio_sm_config c = readfbzmod_program_get_default_config(offset);
 
     pio_gpio_init(pio, zmod_pin);
+    pio_gpio_init(pio, vert_pin);
 
-    sm_config_set_set_pins(&c, zmod_pin, 1);
+
+    // connect pins to set and out
+    //sm_config_set_set_pins(&c, zmod_pin, 1);
+    sm_config_set_out_pins(&c, zmod_pin, 1); // z_mod is done via shifting bits out
+    sm_config_set_set_pins(&c, vert_pin, 1); // trigger is done by set high / low
 
     pio_sm_set_consecutive_pindirs(pio, sm, zmod_pin, 1, true);
+    pio_sm_set_consecutive_pindirs(pio, sm, vert_pin, 1, true);
     
     sm_config_set_clkdiv(&c, div);
 
+    sm_config_set_out_shift(&c, false, false, 0); // shift to left w/o autopull, threshold 0
+
     pio_sm_init(pio, sm, offset, &c);
+
 }
 
 %}

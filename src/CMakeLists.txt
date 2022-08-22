@@ -6,8 +6,8 @@ add_executable(hellschreiber hellschreiber.c)
 
 # Create C header file with the name <pio program>.pio.h
 pico_generate_pio_header(${PROJECT_NAME} ${CMAKE_CURRENT_LIST_DIR}/verticaldef.pio)
-
 pico_generate_pio_header(${PROJECT_NAME} ${CMAKE_CURRENT_LIST_DIR}/readfbzmod.pio)
+pico_generate_pio_header(${PROJECT_NAME} ${CMAKE_CURRENT_LIST_DIR}/hello.pio)
 
 
 pico_enable_stdio_usb(hellschreiber 1)

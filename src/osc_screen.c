@@ -3,10 +3,9 @@
 #include "pico/stdlib.h"
 #include <ctype.h>
 
-//extern uint64_t screen[HOR_MAX];
-uint64_t screen[HOR_MAX];
+uint32_t screen[HOR_MAX];
 
-static uint64_t current_line;
+static uint32_t current_line;
 
 void init_screen()
 {

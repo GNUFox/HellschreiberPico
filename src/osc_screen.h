@@ -8,7 +8,7 @@
 
 // Screen Drawing definitions
 #define HOR_MAX 80
-#define VERT_MAX 28
+#define VERT_MAX 32 // uint32_t for screen line vertical
 
 #define V_PIN 15
 #define Z_MOD_PIN 11
@@ -24,6 +24,8 @@
 #define SCREEN_EMPTY 0
 
 #define MULTIPLIER 0.5
+
+extern uint32_t screen[HOR_MAX];
 
 void init_screen();
 void clear_screen(int fill);
