@@ -2,6 +2,7 @@
 #include "hell_chars.h"
 #include "pico/stdlib.h"
 #include <ctype.h>
+#include <math.h>
 
 uint32_t screen[HOR_MAX];
 
@@ -32,32 +33,74 @@ void clear_screen(int fill)
   }
 }
 
-void fill_screen()
-{
-    for (int i = 0; i < HOR_MAX; i++)
-    {
-        for (int j = 0; j < VERT_MAX; j++)
-        {
-            //box(i, j);
-            //checker_board(i,j);
-        }
-    }
-    //place_char(20,2,1);
-    //place_char(10,2,0);
-}
 
-void box(int i, int j)
+void draw_line(int A_x, int A_y, int B_x, int B_y, int inverted)
 {
-  if(i == 0 || i == HOR_MAX-1 || j == 0 || j == VERT_MAX-1)
+  int from_x, from_y, to_x, to_y;
+  if(A_x > B_x)
   {
-    //screen[i] &= ~(1UL << j);
-    set_pixel(i, j, 1);
+    from_x = B_x;
+    to_x = A_x;
+    from_y = B_y;
+    to_y = A_y;
   }
   else
   {
-    //screen[i] |= 1UL << j;
-    set_pixel(i, j, 0);
+    from_x = A_x;
+    to_x = B_x;
+    from_y = A_y;
+    to_y = B_y;
   }
+  float m = 2;
+  if (from_x != to_x)
+  {
+    // non vertical line, m is not infinte
+    m = (float)(to_y - from_y) / (to_x - from_x);
+  }
+  
+
+  int calc_y = 0;
+  int calc_x = 0;
+  if (m <= 1.0 && m >= -1.0)
+  {
+    // angle  <= +/- 45 deg.
+    for(int i = from_x; i < to_x; i++)
+    {
+      calc_y = floor(m*i)+from_y;
+      set_pixel(i, calc_y, inverted);
+    }
+  }
+  else
+  {
+    // angle > +/- 45 deg
+    m = 1/m;
+
+    if(from_x == to_x) m=0; // vertical line
+    if(to_y < from_y)
+    {
+      for(int i = to_y; i < from_y; i++)
+      {
+        calc_x = to_x+floor(m*i);
+        set_pixel(calc_x, i, inverted);
+      }
+    }
+    else
+    {
+      for(int i = from_y; i < to_y; i++)
+      {
+        calc_x = from_x+floor(m*i);
+        set_pixel(calc_x, i, inverted);
+      }
+    } 
+  }
+}
+
+void box(int pos_x, int pos_y, int size_x, int size_y, int border_thick, int inverted)
+{
+  draw_line(pos_x, pos_y, pos_x+size_x,pos_y, inverted);
+  draw_line(pos_x, pos_y, pos_x,pos_y+size_y, inverted);
+  draw_line(pos_x+size_x, pos_y, pos_x+size_x,pos_y+size_y, inverted);
+  draw_line(pos_x, pos_y+size_y, pos_x+size_x,pos_y+size_y, inverted);
 }
 
 
@@ -81,6 +124,7 @@ void print_string(char* str, int pos_x, int pos_y, int scale, int inverted)
 
   while(*current_c != '\0')
   {
+    //if(*current_c = '\n') pos_y+=HELL_CHAR_COL_MAX*scale;
     place_char(pos_x, pos_y, *current_c, scale, inverted);
     pos_x+=HELL_CHAR_COL_MAX*scale;
     current_c++;
@@ -99,19 +143,23 @@ int _inside_margin(int i, int j, int margin)
 
 void set_pixel(int i, int j, int on_off)
 {
-  if (i >= 0 && i < HOR_MAX)
+  if (i >= 0 && i < HOR_MAX) // changed bounds
   {
     if(on_off)
     {
-      screen[i] &= ~(1UL << j);
+      screen[i] &= ~(1UL << j); // TODO don't modify other pixels
     }
     else
     {
-      screen[i] |= 1UL << j;
+      screen[i] |= 1UL << j; // TODO don't modify other pixels
     }
   }
 }
 
+/**
+ * @brief Deprecated CPU -> GPIO function, replaced by PIO
+ * 
+ */
 void output_screen_to_gpio()
 {
   while(1)
@@ -148,5 +196,17 @@ void output_screen_to_gpio()
     //busy_wait_us(1);
     busy_wait_at_least_cycles(3);
     gpio_put(TRIG_PIN, false);
+  }
+}
+
+void print_screen_to_terminal()
+{
+  for(int i = 0; i < HOR_MAX;i++)   
+  {
+    for(int j = VERT_MAX-1; j >=0; j--)
+    {
+      putc(!((screen[i] >> j) & 1UL) ? '0' : ' ', stdout);
+    }
+    putc('\n', stdout);
   }
 }

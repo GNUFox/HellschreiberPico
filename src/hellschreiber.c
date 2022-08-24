@@ -15,6 +15,11 @@
 #include "verticaldef.pio.h"
 #include "readfbzmod.pio.h"
 
+//#define DEMO_BOUNCE
+//#define DEMO_LINES
+#define DEMO_ALL
+#define DEMO_BOXES
+
 void core1_entry()
 {
     const uint LED_PIN = PICO_DEFAULT_LED_PIN;
@@ -37,6 +42,7 @@ void core1_entry()
     {
         clear_screen(SCREEN_EMPTY);
 
+        #if defined DEMO_CHECKER_BOARD || defined DEMO_ALL
         bool inverted = false;
         for(int i = 0; i < 10 && !get_seq_next(); i++)
         {
@@ -44,7 +50,9 @@ void core1_entry()
             sleep_ms(500);
             inverted = !inverted;
         }
+        #endif
 
+        #if defined DEMO_SEQUENTIAL || defined DEMO_ALL
         char *welcome_strings[4];
         welcome_strings[0] = "HALLO";
         welcome_strings[1] = " IM  ";
@@ -55,7 +63,9 @@ void core1_entry()
         {
             sequential_string_display(welcome_strings, 4, SCALE_DOUBLE,NON_INVERTED);
         }
+        #endif
 
+        #if defined DEMO_SCROLL || defined DEMO_ALL
         char *str_hallo = "HALLO IM REALRAUM";
         init_scroll_text(str_hallo, SCROLL_RIGHT_TO_LEFT);
         while(!get_seq_next())
@@ -78,27 +88,50 @@ void core1_entry()
         clear_screen(SCREEN_EMPTY);
 
         sleep_ms(500);
+        #endif
 
-        
-        while(1 && !get_seq_next())
+        #if defined DEMO_IDLE || defined DEMO_ALL
+        while(!get_seq_next())
         {
             clear_screen(SCREEN_EMPTY);
             print_string(" IDLE ", 2,0,SCALE_DOUBLE,inverted ? INVERTED : NON_INVERTED);
             inverted=!inverted;
             sleep_ms(1000);
         }
+        #endif
+
+        #if defined DEMO_BOUNCE || defined DEMO_ALL
+        init_bounce_text_up_down("OWO WHAT IS THIS");
+        while(!get_seq_next())
+        {
+            bounce_text_up_down(SCALE_NORM, NON_INVERTED, 20);
+        }
+        #endif
+
+        #if defined DEMO_LINES || defined DEMO_ALL
+        clear_screen(SCREEN_EMPTY);
+        while(!get_seq_next())
+        {
+            draw_random_lines();
+            sleep_ms(40);
+        }
+        #endif
+
+        #if defined DEMO_BOXES || defined DEMO_ALL
+        clear_screen(SCREEN_EMPTY);
+        init_zooming_boxes();
+        
+        while(!get_seq_next())
+        {
+            zooming_boxes();
+            sleep_ms(60);
+        }
+        #endif
     }
     
 }
 
-//#define MAIN_RUN
-#define DEBUG_RUN
-#define DEBUG_PIO_OR_CPU
-
-void pio_irq_function()
-{
-    printf("Hello from interrupt %d\n", get_random_number());
-}
+//#define RUN_CPU_VS_PIO
 
 int main()
 {
@@ -111,53 +144,30 @@ int main()
 
     init_screen();
     clear_screen(SCREEN_EMPTY);
-    //print_string("TEST", 0, 0, SCAL, NON_INVERTED);
-
-    #ifdef MAIN_RUN
     multicore_launch_core1(core1_entry);
-    const uint LED_PIN = PICO_DEFAULT_LED_PIN;
-    gpio_init(LED_PIN);
-    gpio_set_dir(LED_PIN, GPIO_OUT);
 
-    init_screen();
-    fill_screen();
+    #ifdef RUN_CPU_VS_PIO
 
+    // RUN with CPU GPIO
     output_screen_to_gpio(); // endless loop
-    #endif
 
-    // Testing Vertical deflection only (because of high jitter)
-    #ifdef DEBUG_RUN
-
-
-
-    #ifdef DEBUG_PIO_OR_CPU
-    multicore_launch_core1(core1_entry);
-
-
-    float pio_0_freq = 4.7*16666; // TODO: adjust for real operation
+    #else
+    
+    // RUN with PIO
     //float pio_1_freq = 4.7*16666;//4.7*16666/x; // TODO: adjust for real operation
-    float pio_1_freq = 4.7*16666*3;
-    PIO pio_0 = pio0;
+    float pio_1_freq = 4.7*16666*5;
     PIO pio_1 = pio1;
 
-    uint sm_0 = pio_claim_unused_sm(pio_0, true);
     uint sm_1 = pio_claim_unused_sm(pio_1, true);
 
-    uint offset_0 = pio_add_program(pio_0, &verticaldef_program);
     uint offset_1 = pio_add_program(pio_1, &readfbzmod_program);
 
-    float div_0 = (float)clock_get_hz(clk_sys) / pio_0_freq;
     float div_1 = (float)clock_get_hz(clk_sys) / pio_1_freq;
-    //float div = 
 
-    //verticaldef_program_init(pio_0, sm_0, offset_0, V_PIN, div_0);
     readfbzmod_program_init(pio_1, sm_1, offset_1, Z_MOD_PIN, V_PIN, div_1);
 
-    //pio_sm_set_enabled(pio_0, sm_0, true);
     pio_sm_set_enabled(pio_1, sm_1, true);
 
-    //uint32_t line = 0b01010101010101010101010101010101;
-    uint32_t line = 0b00110101010101010101010101010100;
     while(1)
     {
         // Frame Trigger
@@ -169,15 +179,6 @@ int main()
         }
         
     }
-    #else
-    while(1)
-    {
-        gpio_put(V_PIN, true);
-        busy_wait_at_least_cycles(50*x);
-        gpio_put(V_PIN, false);
-        busy_wait_at_least_cycles(6720*x);
-    }
-    #endif
     #endif
 
     return 0;
