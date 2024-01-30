@@ -8,10 +8,10 @@
 
 .wrap_target
     pull
-    set x, 31 ; line pixel counter ;TODO: increased vertical pixel count to 32 that is easier
+    set x, 31 ; line pixel counter
 
     set pins, 1 [2] ; vert deflection charge
-    set pins, 0     ; trigger low
+    set pins, 0     ; vert deflection start discharge by external resistor
 
     line_loop:
         out pins, 1

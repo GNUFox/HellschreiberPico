@@ -31,7 +31,7 @@ void bounce_text_up_down(int scaling, int inverted, int sleep_time);
 void draw_random_lines();
 
 // shapes
-void checker_board(int pos_x, int pos_y, int size_x, int size_y, bool inverted);
+void checker_board(int pos_x, int pos_y, int size_x, int size_y, int block_size, bool inverted);
 void init_zooming_boxes();
 void zooming_boxes();
 

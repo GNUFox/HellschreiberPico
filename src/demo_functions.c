@@ -34,9 +34,9 @@ void sequential_string_display(char **string_array, int size, int scaling, int i
 {
     for(int string_index = 0;string_index < size;string_index++)
     {
-        sleep_ms(1000);
         clear_screen(inverted);
         print_string(string_array[string_index], 2,2,scaling,inverted);
+        sleep_ms(1000);
     }
 }
 
@@ -71,7 +71,7 @@ void scroll_text(int scaling, int inverted, int sleep_time)
     scroll_pos_x--;
 }
 
-void checker_board(int pos_x, int pos_y, int size_x, int size_y, bool inverted)
+void checker_board(int pos_x, int pos_y, int size_x, int size_y, int block_size, bool inverted)
 {
     bool t = !inverted;
     bool f = inverted;
@@ -81,9 +81,9 @@ void checker_board(int pos_x, int pos_y, int size_x, int size_y, bool inverted)
         {
             if(_inside_bounds(i,j) && _inside_margin(i,j,3))
             {
-                if((i%6)>2)
+                if((i%block_size)>(block_size/2)-1)
                 {
-                    if((j%6)>2)
+                    if((j%block_size)>(block_size/2)-1)
                     {
                         set_pixel(i, j, t);
                     }
@@ -94,7 +94,7 @@ void checker_board(int pos_x, int pos_y, int size_x, int size_y, bool inverted)
                 }
                 else
                 {
-                    if((j%6)>2)
+                    if((j%block_size)>(block_size/2)-1)
                     {
                         set_pixel(i, j, f);
                     }

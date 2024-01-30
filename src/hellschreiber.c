@@ -12,13 +12,19 @@
 #include "hell_chars.h"
 #include "demo_functions.h"
 
+#include "hell_rx.h"
+
 #include "verticaldef.pio.h"
 #include "readfbzmod.pio.h"
 
+#define DEMO_ALL
+
+
+#define DEMO_SEQUENTIAL
 //#define DEMO_BOUNCE
 //#define DEMO_LINES
-#define DEMO_ALL
-#define DEMO_BOXES
+//#define DEMO_BOXES
+//#define DEMO_HELL
 
 void core1_entry()
 {
@@ -36,19 +42,24 @@ void core1_entry()
 
     bool true_pointer = true;
     repeating_timer_t timer;
-    add_repeating_timer_ms(20*1000, (repeating_timer_callback_t)set_seq_next, &true_pointer, &timer);
 
     while(1)
     {
+        add_repeating_timer_ms(20*1000, (repeating_timer_callback_t)set_seq_next, &true_pointer, &timer);
         clear_screen(SCREEN_EMPTY);
 
         #if defined DEMO_CHECKER_BOARD || defined DEMO_ALL
         bool inverted = false;
         for(int i = 0; i < 10 && !get_seq_next(); i++)
         {
-            checker_board(20,5,20,10, inverted);
-            sleep_ms(500);
+            checker_board(20,5,20,10, 4, inverted);
+            sleep_ms(250);
             inverted = !inverted;
+        }
+        for(int i = 0; i < 100 && !get_seq_next(); i++)
+        {
+            checker_board(20,5,20,10, ((int)i/2)%10 + 4, false);
+            sleep_ms(40);
         }
         #endif
 
@@ -66,11 +77,11 @@ void core1_entry()
         #endif
 
         #if defined DEMO_SCROLL || defined DEMO_ALL
-        char *str_hallo = "HALLO IM REALRAUM";
+        char *str_hallo = "Herzlich willkommen IM REALRAUM";
         init_scroll_text(str_hallo, SCROLL_RIGHT_TO_LEFT);
         while(!get_seq_next())
         {
-            scroll_text(SCALE_DOUBLE,NON_INVERTED, 20);
+            scroll_text(SCALE_NORM,NON_INVERTED, 20);
         }
 
         char *str_hellschreiber = "HELLSCHREIBER DEMO";
@@ -94,13 +105,19 @@ void core1_entry()
         while(!get_seq_next())
         {
             clear_screen(SCREEN_EMPTY);
-            print_string(" IDLE ", 2,0,SCALE_DOUBLE,inverted ? INVERTED : NON_INVERTED);
+            print_string(" IDLE ", 2,2,SCALE_DOUBLE,inverted ? INVERTED : NON_INVERTED);
             inverted=!inverted;
             sleep_ms(1000);
         }
         #endif
 
         #if defined DEMO_BOUNCE || defined DEMO_ALL
+        clear_screen(SCREEN_EMPTY);
+        print_string("OWO", 0,3,SCALE_FULL, NON_INVERTED);
+        while(!get_seq_next())
+        {
+        }
+        clear_screen(SCREEN_EMPTY);
         init_bounce_text_up_down("OWO WHAT IS THIS");
         while(!get_seq_next())
         {
@@ -125,6 +142,16 @@ void core1_entry()
         {
             zooming_boxes();
             sleep_ms(60);
+        }
+        #endif
+
+        #if defined DEMO_HELL || defined DEMO_ALL
+        cancel_repeating_timer(&timer);
+        clear_screen(SCREEN_EMPTY);
+        init_hell_rx();
+        while(!get_seq_next())
+        {
+            receive_to_fb();
         }
         #endif
     }

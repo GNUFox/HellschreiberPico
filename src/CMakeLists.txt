@@ -1,4 +1,4 @@
-
+add_library(hell_rx hell_rx.c)
 add_library(hell_chars hell_chars.c)
 add_library(osc_screen osc_screen.c)
 add_library(demo_functions demo_functions.c)
@@ -13,13 +13,18 @@ pico_generate_pio_header(${PROJECT_NAME} ${CMAKE_CURRENT_LIST_DIR}/hello.pio)
 pico_enable_stdio_usb(hellschreiber 1)
 pico_enable_stdio_uart(hellschreiber 1)
 pico_add_extra_outputs(hellschreiber)
+
+target_link_libraries(hell_rx pico_stdlib hardware_adc osc_screen) 
+
 target_link_libraries(osc_screen pico_stdlib)
 target_link_libraries(demo_functions osc_screen)
 target_link_libraries(${PROJECT_NAME}
     osc_screen
     pico_stdlib
     pico_multicore
+    pico_divider
     hell_chars
     demo_functions
     hardware_pio
+    hell_rx
 )
